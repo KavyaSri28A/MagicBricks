@@ -1,2 +1,0 @@
-# MagicBricks
-MagicBricks-Automation
