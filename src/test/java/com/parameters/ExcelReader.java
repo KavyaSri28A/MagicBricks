@@ -108,5 +108,12 @@ public class ExcelReader {
 //        fis.close();
 //        wb.close();
     }
+	public static String getData(int rownum,int colnum,int sheetNumber) {
+		sheet=wb.getSheetAt(sheetNumber);
+		row=sheet.getRow(rownum);
+		cell10=row.getCell(colnum);
+		return cell10.getStringCellValue();
+
+	}
 }
 
