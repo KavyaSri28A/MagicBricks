@@ -3,23 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.stepdefinition.Rent">
+      <class name="com.runner.TestRunner">
         <methods>
-          <include name="the_system_should_display_a_list_of_rental_properties_in_hyderabad_that_are_immediately_available"/>
-          <include name="the_location_of_each_property_should_be_valid_and_within_jaipur"/>
-          <include name="each_listing_should_contain_details_including_rent_area_location_and_contact_information"/>
-          <include name="the_system_should_display_a_list_of_agricultural_lands_for_rent_in_new_delhi"/>
-          <include name="the_user_enters_a_valid_location_in_the_location_search_field"/>
-          <include name="the_user_clicks_the_button"/>
-          <include name="the_system_should_display_a_list_of_commercial_office_spaces_for_rent_in_chittoor"/>
-          <include name="each_listing_should_indicate_as_the_availability_status"/>
-          <include name="the_system_should_display_a_list_of_rental_properties_in_jaipur"/>
-          <include name="each_flat_should_have_details_including_rent_size_amenities_and_contact_information"/>
-          <include name="user_provides_the_following_details"/>
-          <include name="the_user_is_on_the_magic_bricks_homepage"/>
-          <include name="the_system_should_display_a_list_of_2bhk_flats_in_bangalore_with_rents_less_than_or_equal_to_₹"/>
+          <include name="setUpClass"/>
+          <include name="tearDownClass"/>
+          <include name="runScenario" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.stepdefinition.Rent -->
+      </class> <!-- com.runner.TestRunner -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

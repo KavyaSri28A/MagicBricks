@@ -46,5 +46,10 @@
   		<artifactId>Seleniumdevop</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>io.cucumber.selenium</groupId>
+  		<artifactId>CucumberDemo</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>

@@ -9,25 +9,21 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import com.parameters.ExcelReader;
 
 public class BaseSteps {
-	private static WebDriver driver;
-	private static void initializewebDriver() throws FileNotFoundException {
+	private  WebDriver driver;
+	private  void initializewebDriver() throws FileNotFoundException {
 		driver=new ChromeDriver();
-		String url=ExcelReader.geturl();
-		driver.get(url);
+		//String url=ExcelReader.geturl();
+		driver.get("https://www.magicbricks.com");
 		ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
 		
 	}
-	public WebDriver setupbrowser() throws FileNotFoundException {
+	public  WebDriver setupbrowser() throws FileNotFoundException {
 		if(driver==null) {
 			initializewebDriver();
 		}
 		return driver;
 		
-	}
-	public static WebDriver setupBrowser() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
