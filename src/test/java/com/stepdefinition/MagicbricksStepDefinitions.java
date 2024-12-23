@@ -1,6 +1,7 @@
 package com.stepdefinition;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
@@ -16,6 +17,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.pages.PlaceOrderButton;
+import com.parameters.ExcelReader;
 import com.setup.ExtraFunctions;
 
 import io.cucumber.java.en.Given;
@@ -33,7 +36,7 @@ public class MagicbricksStepDefinitions {
 
     // Step 1: Given the user is on the Magicbricks home page
     @Given("the user is on the Magicbricks home page")
-    public void the_user_is_on_the_magicbricks_home_page() {
+    public void the_user_is_on_the_magicbricks_home_page() throws IOException {
     	ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
  //driver = new ChromeDriver(options);
@@ -43,50 +46,20 @@ public class MagicbricksStepDefinitions {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.get("https://www.magicbricks.com");
+        driver.get(ExcelReader.geturl());
     }
 
     // Step 2: When User clicks on SELL option
     @When("User clicks on SELL option")
     public void user_clicks_on_sell_option() throws InterruptedException {
-    	WebElement sell=driver.findElement(By.xpath("//*[@id='commercialIndex']/header/section[2]/div/ul/li[3]/a"));
-       wait.until(ExpectedConditions.elementToBeClickable(sell));
-       Actions actions0 = new Actions(driver);
-       actions0.moveToElement(sell);
-    	Thread.sleep(100);
-    	sell.click();
+    	PlaceOrderButton.user_clicks_sell(driver, wait);
     	
     }
 
     // Step 3: And the user click on property valuation option
     @When("the user click on property valuation option")
     public void the_user_click_on_property_valuation_option() {
-    	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Property Valuation']"))).click();
-    	 
-    	 FirstWindow=driver.getWindowHandle();
-    	 Set<String> s1=driver.getWindowHandles();		
-         Iterator<String> i1=s1.iterator();
-         while(i1.hasNext())			
-         {		
-             String ChildWindow=i1.next();		
-             		
-             if(!FirstWindow.equalsIgnoreCase(ChildWindow))			
-             {    
-            	 driver.switchTo().window(ChildWindow);
-             
-    	 //driver.get("https://www.magicbricks.com/propertyservices/property-valuation");
- 		JavascriptExecutor js = (JavascriptExecutor) driver;
- 		
- 		// Scroll the page slowly in steps
- 		WebElement  clickOn= driver.findElement(By.xpath("//*[@id=\"pkgpriceSec\"]/a[1]"));
- 		js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id=\"propValpkg\"]/div/div[2]")));
- 	      
- 		//js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", clickOn);
-  
- 		clickOn.click();
- 		}
-    	    
-         }
+    	PlaceOrderButton.user_clicks_property(driver, wait, FirstWindow);
     }
       
  
