@@ -43,14 +43,15 @@ public class ExtraFunctions {
 		Labelclick.click();
 	    //9618871371
 	    Thread.sleep(10000);
-		phoneNumber.sendKeys("9677661922");
+		phoneNumber.sendKeys("9676207499");
 	    Thread.sleep(10000);
 	    WebElement nextButton=driver.findElement(By.id("btnStep1"));
 	    nextButton.click();
 	    Thread.sleep(20000);
 	    WebElement continueButton=driver.findElement(By.xpath("//*[@id=\"verifyOtpDiv\"]/div[2]/div[3]/button"));
 	    continueButton.click();
-//	    driver.switchTo().window(firstwindow);
+
+	    
 		return driver;
 	    
 	}
