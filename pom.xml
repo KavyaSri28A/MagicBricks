@@ -29,6 +29,7 @@
     <version>7.20.1</version>
     <scope>test</scope>
 </dependency>
+
 <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 <dependency>
     <groupId>org.apache.poi</groupId>
@@ -51,5 +52,10 @@
   		<artifactId>CucumberDemo</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extentreports-cucumber7-adapter</artifactId>
+    <version>1.14.0</version>
+</dependency>
   </dependencies>
 </project>
