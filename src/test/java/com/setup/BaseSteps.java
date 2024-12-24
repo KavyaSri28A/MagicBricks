@@ -10,10 +10,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import com.parameters.ExcelReader;
 
 public class BaseSteps {
-	private static WebDriver driver;
-	static ChromeOptions chromeOptions;
+	 WebDriver driver;
+     ChromeOptions chromeOptions;
 //	private static Properties property;
-	private static void initializeWebDriver() throws IOException {
+	private void initializeWebDriver() throws IOException {
 		chromeOptions = new ChromeOptions();
 	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 	    driver = new ChromeDriver(chromeOptions);
@@ -23,11 +23,11 @@ public class BaseSteps {
 		driver.get(url);
 	}
 	
-	public static WebDriver setupBrowser() throws IOException {
+	public WebDriver setupBrowser() throws IOException {
 		if(driver==null) {
 			initializeWebDriver();
 		}
-		return driver;
+		return driver; 
 	}
 }
 

@@ -1,6 +1,5 @@
 package com.pages;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -48,7 +47,6 @@ public static void enterDetails(Actions mouse,WebDriver driver,Properties prop,W
     WebElement mobileNumberField=driver.findElement(By.xpath("//*[@id=\"mobileNumber\"]"));
     mobileNumberField.click();
     mobileNumberField.sendKeys(mobile);
-    System.out.println(amount+mobile);
 //    }
     
     WebElement propertyCityField=driver.findElement(By.id("PropertyCity"));

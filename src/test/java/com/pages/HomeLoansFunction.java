@@ -16,6 +16,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import io.cucumber.datatable.DataTable;
 
 public class HomeLoansFunction {
+//	WebDriver driver;
+//	public HomeLoansFunction(WebDriver driver) {
+//		this.driver=driver;
+//	}
 	public static void clickHomeLoans(WebDriver driver) throws InterruptedException {
 		Thread.sleep(5000);
 		WebElement homeLoanHeading=driver.findElement(By.xpath("//*[@id=\"commercialIndex\"]/header/section[2]/div/ul/li[4]/a"));

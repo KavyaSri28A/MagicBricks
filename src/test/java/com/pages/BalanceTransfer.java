@@ -18,7 +18,7 @@ import io.cucumber.datatable.DataTable;
 
 public class BalanceTransfer {
 	public static void clickBalanceTransfer(WebDriver driver) throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		WebElement homeLoanHeading=driver.findElement(By.xpath("//*[@id=\"commercialIndex\"]/header/section[2]/div/ul/li[4]/a"));
 		homeLoanHeading.click();
 		Thread.sleep(5000);
@@ -63,29 +63,28 @@ public class BalanceTransfer {
 			for(int j=0;j<data.size();j++) {
 				WebElement field=fields.get(j);
 				field.clear();
-				System.out.println(keys.get(j)+" : "+data.get(keys.get(j)));
 				String Data=data.get(keys.get(j));
 				field.sendKeys(Data);
 			}
 		}
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		WebElement takenEl=driver.findElement(By.xpath("//*[@id=\"loanTransferCalculator\"]/div/div[1]/div/div[4]/input"));
 		JavascriptExecutor js=(JavascriptExecutor) driver;
+		Thread.sleep(5000);
 		js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", takenEl);
 		WebElement compare=driver.findElement(By.xpath("//*[@id=\"loanTransferCalculator\"]/div/div[1]/div/div[4]/input"));
-		
+		Thread.sleep(5000);
 		wait.until(ExpectedConditions.elementToBeClickable(compare));
 		compare.click();
 	}
-	public static void compareOutput(WebDriver driver,Properties prop) {
-		WebElement message=driver.findElement(By.id("messageDiv"));
+	public static void compareOutput(WebDriver driver,Properties prop,DataTable dataTable) throws InterruptedException {
+		List<Map<String,String>> values=dataTable.asMaps(String.class, String.class);
+		for(Map<String,String> data:values) {
+		Thread.sleep(5000);
 		WebElement lose=driver.findElement(By.id("messageAmountDiv"));
-		String actualMessage=message.getText();
 		String actualLoseAmount=lose.getText();
-		String expectedMessage=prop.getProperty("messageOfBalanceTransfer");
-		String expectedloseAmount=prop.getProperty("loseAmount");
-		System.out.println(actualMessage + actualLoseAmount);
-		System.out.println(expectedMessage + expectedloseAmount);
-		Assert.assertEquals(actualLoseAmount, expectedloseAmount);
+		String expectedloseAmount=data.get("expectedinterest");
+		Assert.assertEquals(expectedloseAmount, actualLoseAmount);
+		}
 	}
 }

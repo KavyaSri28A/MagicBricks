@@ -9,16 +9,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class CalculatorCommon {
-	public static void clickCalculator(WebDriver driver) throws InterruptedException {
+public class CalculatorNegativeScenario {
+	public static void getCalculatorPage(WebDriver driver) throws InterruptedException {
 		Thread.sleep(5000);
 		WebElement homeLoanHeading=driver.findElement(By.xpath("//*[@id=\"commercialIndex\"]/header/section[2]/div/ul/li[4]/a"));
 		homeLoanHeading.click();
-		Thread.sleep(5000);
+	    Thread.sleep(5000);
 		WebElement homeLoanCalculator=driver.findElement(By.xpath("//*[@id=\"homeloanDrop\"]/div/div[3]/ul/li[1]/a"));
 		homeLoanCalculator.click();
 	}
-	public static void enterdetails(WebDriver driver,Properties prop,Actions mouse) throws InterruptedException {
+	public static void enterUserDetails(String percent,WebDriver driver,Actions mouse,Properties prop) throws InterruptedException {
 		mouse=new Actions(driver);
 		Thread.sleep(5000);
 	    String mainWindowHandle=driver.getWindowHandle();
@@ -37,17 +37,18 @@ public class CalculatorCommon {
 	    amountField.clear();
 	    interestField.clear();
 	    amountField.sendKeys(prop.get("needamount").toString());
-	    interestField.sendKeys(prop.get("percent").toString());
+	    interestField.sendKeys(percent);
 	    Thread.sleep(10000);
-	    tenure.click();	    
+	    tenure.click();
+	    
 	    tenureDropDown20.click();
 	    Thread.sleep(3000);
 	    calculateButton.click();
 	}
-	public static void compareresult(WebDriver driver,Properties prop) {
-		WebElement actual=driver.findElement(By.xpath("//*[@id=\"perMonthEmi\"]"));
-		String actualAmount=actual.getText();
-		String expectedAmount=(String) prop.get("expectedAmount");
-		Assert.assertEquals(expectedAmount, actualAmount);
+	public static void getComparisson(String expectedWarning,WebDriver driver) {
+		WebElement warning=driver.findElement(By.xpath("//*[@id=\"interestRateEmiCalError\"]"));
+		String actualWarning=warning.getText();
+		Assert.assertEquals(actualWarning, expectedWarning);
+		
 	}
 }
