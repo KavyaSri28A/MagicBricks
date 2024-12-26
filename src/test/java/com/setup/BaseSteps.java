@@ -1,6 +1,7 @@
 package com.setup;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,16 +9,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import com.parameters.ExcelReader;
 
 public class BaseSteps {
-	private static WebDriver driver;
+	 WebDriver driver;
 //	private static Properties property;
-	private static void initializeWebDriver() throws FileNotFoundException {
+	private void initializeWebDriver() throws IOException{
 		driver=new ChromeDriver();
 		String url=ExcelReader.geturl();
 		driver.get(url);
 		
 	}
 	
-	public static WebDriver setupBrowser() throws FileNotFoundException {
+	public WebDriver setupBrowser() throws IOException {
 		if(driver==null) {
 			initializeWebDriver();
 		}
