@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
@@ -131,8 +133,6 @@ public class RentPages {
 		WebElement element= driver.findElement(By.xpath("//*[@id=\"keyword\"]"));
 		Actions action =new Actions(driver);
 		action.click(element).sendKeys(ExcelReader.getStrValue()).perform();
-		// action.click(element).sendKeys(ExcelReader.getStrValue()).perform();
-
 
 	}
 	
@@ -182,6 +182,8 @@ public class RentPages {
         Thread.sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"10002_10003_10021_10022\"]"))).click(); //Flat
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"10001_10017\"]"))).click(); //House/Villa
+        Thread.sleep(1000);
+        //)
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"10002_10003_10021_10022\"]"))).click(); //Flat
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"11704\"]"))).click(); //5BHK
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"searchFormHolderSection\"]/section/div/div[1]/div[3]/div[3]/div[1]"))).click(); //Budget
@@ -225,6 +227,17 @@ public class RentPages {
 		System.out.println("We Are in the correct page");
 	}
 	
+	public static void whsc() throws InterruptedException {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='commercialIndex']/header/section[1]/div/div[1]/div[2]/a"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"commercialIndex\"]/header/section[1]/div/div[1]/div[2]/div/div[1]/div[3]/ul/li[2]/a"))).click();
+        Thread.sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"tabRENT\"]"))).click();
+        Thread.sleep(1000);
+
+	}
+	
+	
+	
 	public void screenShotMethod(String fname) {
 	    File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
  
@@ -240,5 +253,21 @@ public class RentPages {
 	        System.out.println("Error while saving screenshot: " + e.getMessage());
 	    }
 	}
-      
+	
+	public static void wh2sc(String locations) throws InterruptedException {
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"keyword_autoSuggestSelectedDiv\"]/div/div[1]"))).click();
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"keyword_autoSuggestSelectedDiv\"]/div/div[2]"))).click();
+	    Thread.sleep(1000);
+	    WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(By.id("keyword_autoSuggestSelectedDiv")));
+	    searchBox.click();
+	    Actions actions = new Actions(driver);
+	    actions.moveToElement(searchBox).click().sendKeys(locations).build().perform();
+	    wait.until(ExpectedConditions.elementToBeClickable(By.className("mb-search__btn"))).click(); // Click the search button
+
+	}
+	public static void thsc() {
+		WebElement text=driver.findElement(By.xpath("//*[@id=\"home_page_msg\"]/span"));
+		Assert.assertTrue(text.isDisplayed(),"No we are in the wrong Page");
+		System.out.println("Enter a valid location or project");
+	}
 }

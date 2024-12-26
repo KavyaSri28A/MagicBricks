@@ -1,8 +1,11 @@
 package com.stepdefinition;
 
 import java.io.IOException;
+import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.pages.RentPages;
 import com.setup.BaseSteps;
@@ -104,6 +107,29 @@ public class RentModule {
 		RentPages.thsc3();
 		rentPages.screenShotMethod("sc3");
 	}
+	
+	@When("the user clicks on Find an Agent under the RENT section")
+	public void the_user_clicks_on_find_an_agent_under_the_rent_section() throws InterruptedException {
+		RentPages.whsc();
+	}
+
+	@When("the user enters different locations {string} for rental properties")
+	public void the_user_enters_different_locations_for_rental_properties(String locations) throws InterruptedException {
+	    // Write code here that turns the phrase above into concrete actions
+	    // Call the wh2sc method and pass the locations list
+	    RentPages.wh2sc(locations);
+	    //throw new io.cucumber.java.PendingException();
+	}
+	
+
+
+	@Then("the user gets valid results for the entered location")
+	public void the_user_gets_enter_a_valid_location() {
+	    // Write code here that turns the phrase above into concrete actions
+	    //throw new io.cucumber.java.PendingException();
+		RentPages.thsc();
+	}
+
 
 
 }
