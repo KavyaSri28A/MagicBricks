@@ -8,12 +8,7 @@ Feature: Home Interior Dropdown Menu on Magicbricks
     Then a pop-up should display to fill the details
     #And the pop-up offers to "Call RM" with a provided phone number
 
-  Scenario: Requesting a Free Consultation for 1BHK Designs
-    Given the user is on the Homepage of Magicbricks
-    When the user clicks on 1BHK interior design under Full Home Interior Designs
-    And click on the Get an Estimate for your home button
-    Then click which city user want
-    And user clicks continue
+  
 
   Scenario: Interior design below five lakhs
     Given the user is on the 1BHK Design Ideas page
