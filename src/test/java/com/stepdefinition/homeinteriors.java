@@ -1,22 +1,27 @@
 package com.stepdefinition;
 
 import java.io.IOException;
-
 import java.time.Duration;
-
+import java.util.Properties;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.pages.BathroomDesignPage;
 import com.pages.BedroomDesignPage;
 import com.pages.ClickHomeInterior;
 import com.pages.ErrorPageCostCalculator;
+import com.pages.HomeLoanEMI;
 import com.pages.InteriorCostCalculatorPage;
 import com.pages.OneBHKDesigns;
 import com.pages.OneBHKPage;
 import com.parameters.ExcelReader;
+import com.parameters.FileReading;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -30,6 +35,7 @@ public class homeinteriors {
 	static WebDriver driver;
 WebDriverWait wait;
 String currentWindowHandle;
+Properties prop;
 static String secondURL;
 	@Given("the user is on the Magicbricks Homepage")
 	public void the_user_is_on_the_magicbricks_homepage() throws IOException {
@@ -41,6 +47,7 @@ static String secondURL;
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         driver.get(ExcelReader.geturl());
+        prop=FileReading.reader();
          
         
        
@@ -62,10 +69,11 @@ static String secondURL;
 
 
 	@When("the user clicks on book your spot now button under Home Interior Mega Expo in Bangalore")
-	public void the_user_clicks_on_contact_now_button_on_any_one_designer_in_list() throws InterruptedException {
+	public void the_user_clicks_on_contact_now_button_on_any_one_designer_in_list() throws InterruptedException, IOException {
 
 		
 		ClickHomeInterior.bookYourSpot(driver, wait, currentWindowHandle);
+		ClickHomeInterior.screenShotMethod("scenario", driver);
         
 		 
 		
@@ -75,35 +83,10 @@ static String secondURL;
 	public void a_pop_up_should_display_to_confirm_the_contact_by_the_relationship_manager_rm() throws InterruptedException {
 		
         
-		ClickHomeInterior.popUpDetails(driver, wait);
+		ClickHomeInterior.popUpDetails(driver, wait, prop);
 		
 	}
 
-//	@Then("the pop-up offers to {string} with a provided phone number")
-//	public void the_pop_up_offers_to_with_a_provided_phone_number(String string) throws InterruptedException {
-//
-//		Thread.sleep(20000);   
-//		WebElement popup=driver.findElement(By.xpath("//*[@id=\"int-contact-popup\"]/div/div[2]/div[1]/div[2]"));
-//		//*[@id="int-contact-popup"]/div/div[2]/div[1]/div[2]
-//                                                                                                                                                             
-//
-//		String actualText = popup.getText().replaceAll("\\s+", " ").trim();
-//        System.out.println("Actual Popup Text (Normalized): " + actualText);
-//
-//        // Expected text, normalized
-//        String expectedText = "Our Relationship Manager (RM) will reach out to you shortly".replaceAll("\\s+", " ").trim();
-//
-//        // Print expected text for debugging
-//        System.out.println("Expected Popup Text (Normalized): " + expectedText);
-//
-//        // Compare actual text with expected text
-//        Assert.assertTrue("Popup text does not match expected content!", actualText.contains(expectedText));
-//    	//Assert.assertEquals(actual, Expected);
-//    	driver.quit();
-//       // wait.until(ExpectedConditions.urlContains("property-services"));
-//       //.assertEquals(actual, expected);
-//       
-//	}
 
 
 	@Given("the user is on the Homepage of Magicbricks")
@@ -115,6 +98,7 @@ static String secondURL;
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         driver.get(ExcelReader.geturl());
+        prop=FileReading.reader();
 		
 	}
 
@@ -184,7 +168,7 @@ static String secondURL;
     wait = new WebDriverWait(driver, Duration.ofSeconds(100));
     driver.get(ExcelReader.geturl()); 
 	}
-//
+//BedroomDesignPage
 
 	@When("The user clicks Bedroom Design Ideas")
 	public void the_user_clicks_bedroom_design_ideas() throws InterruptedException {
@@ -212,7 +196,7 @@ static String secondURL;
 		BedroomDesignPage.fillPopUp(driver, wait, FirstWindow);
 	}
 
-
+//BathroomDesignPage
 
 	@When("The user clicks Bathroom Design Ideas")
 	public void the_user_clicks_bathroom_design_ideas() throws InterruptedException {
@@ -229,12 +213,15 @@ static String secondURL;
 		BathroomDesignPage.estimatePrice(driver, wait);
 	}
 	@Then("A popup will show to fill the details on bathroom design requirements")
-	public void a_popup_will_show_to_fill_the_details_on_bathroom_design_requirements() throws InterruptedException {
+	public void a_popup_will_show_to_fill_the_details_on_bathroom_design_requirements() throws InterruptedException, IOException {
 
 		
-		BathroomDesignPage.fillDetails(driver, wait, FirstWindow);
+		BathroomDesignPage.fillDetails(driver, wait, FirstWindow, prop);
+		driver.quit();
 	}
 
+	
+	//InteriorCostCalculatorPage
 
 	@When("the user selects Full Home Interior Cost Calculator")
 	public void the_user_selects_full_home_interior_cost_calculator() throws InterruptedException {
@@ -243,18 +230,23 @@ static String secondURL;
 		
 	}
 
-	@When("User selects the BHK type and select squarefeet needed and clicks the Next button")
-	public void user_selects_the_bhk_type_and_select_squarefeet_needed_and_clicks_the_next_button() throws InterruptedException {
+	@When("User selects the BHK type and select squarefeet needed")
+	public void user_selects_the_bhk_type_and_select_squarefeet_needed() throws InterruptedException {
 		
 		InteriorCostCalculatorPage.getBHKDetails(driver, wait, currentWindowHandle);
 	}
 	
+	@When("clicks the Next button")
+	public void clicks_the_next_button() throws InterruptedException {
+		InteriorCostCalculatorPage.clickNext(driver);
+	}
+
 	@Then("User should fill the user details to get verified")
-	public void user_should_fill_the_user_details_to_get_verified() throws InterruptedException {
-		
-		InteriorCostCalculatorPage.getUserDetails(driver, wait);
-		
-		}
+	public void user_should_fill_the_user_details_to_get_verified(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+		InteriorCostCalculatorPage.getUserDetails(driver, wait,dataTable);
+	}
+	
+
 	@When("the user  selects full Home Interior Cost Calculator1")
 	public void the_user_selects_full_home_interior_cost_calculator1() throws InterruptedException {
 		ErrorPageCostCalculator.bhkDetails(driver, wait);
@@ -271,6 +263,42 @@ static String secondURL;
 		
 		ErrorPageCostCalculator.getErrorData(driver, wait);
 	}
+
+
+	@When("User clicks on the Home Loan EMI Calculator")
+	public void user_clicks_on_the_home_loan_emi_calculator() throws InterruptedException {
+		
+		WebElement homeLoans =driver.findElement(By.xpath("//*[@id=\"commercialIndex\"]/header/section[2]/div/ul/li[4]/a"));
+        wait.until(ExpectedConditions.elementToBeClickable(homeLoans));
+
+        Actions actions = new Actions(driver);//
+
+        actions.moveToElement(homeLoans);
+        Thread.sleep(1000);
+        homeLoans.click();
+        WebElement loan = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//*[@id=\"homeloanDrop\"]/div/div[3]/ul/li[1]/a")));
+            Thread.sleep(100);
+            loan.click();
+            Thread.sleep(10000);
+
+        
+	}
+
+	@When("User Provides the details and rate of interest as {string}")
+	public void user_provides_the_details_and_rate_of_interest_as(String string) throws InterruptedException {
+		HomeLoanEMI.clickEMI(driver, string, prop);
+	}
+
+	@Then("It should show the warning {string}")
+	public void it_should_show_the_warning(String string) {
+		HomeLoanEMI.showWarning(driver, string);
+		driver.quit();
+		//"Min interest starts from 8%"
+	}
+
+
+
 
 
 }

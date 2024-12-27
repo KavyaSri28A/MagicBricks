@@ -63,7 +63,12 @@ public class BedroomDesignPage {
 	    js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", scroll);
 
 	    // Wait for the "estimate price" button and click it
-	    WebElement text= driver.findElement(By.xpath("//*[@id=\"id_dirsp\"]/div[3]/div[1]/div[1]/div[1]/div[2]/div[3]/div"));
+	    
+	    WebElement drop= driver.findElement(By.xpath("//*[@id=\"id_dirsp\"]/div[3]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]"));
+		Thread.sleep(1000);
+	    drop.click();
+		Thread.sleep(1000);
+	    WebElement text= driver.findElement(By.xpath("//*[@id=\"id_dirsp\"]/div[3]/div[1]/div[1]/div[3]/div[2]/div[3]/div"));
 		Thread.sleep(1000);
 	    text.click();
 		Thread.sleep(1000);

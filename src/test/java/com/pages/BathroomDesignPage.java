@@ -1,5 +1,7 @@
 package com.pages;
 
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Set;
 
 import org.junit.Assert;
@@ -10,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.parameters.ExcelReader;
 
 public class BathroomDesignPage {
 	static JavascriptExecutor js;
@@ -77,7 +81,7 @@ public class BathroomDesignPage {
 		
 	}
 	
-	public static void fillDetails(WebDriver driver,WebDriverWait wait, String FirstWindow) throws InterruptedException {
+	public static void fillDetails(WebDriver driver,WebDriverWait wait, String FirstWindow, Properties prop) throws InterruptedException, IOException {
 		//for going to third tab
 				String SecondWindow = driver.getWindowHandle();
 				 Set<String> windowHandles=driver.getWindowHandles();
@@ -99,6 +103,23 @@ public class BathroomDesignPage {
 				    WebElement button = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div[2]/div[2]/button"));
 					Thread.sleep(1000);
 				    button.click();
+				    
+					WebElement nameField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='user-name']"));
+			        
+					String data=ExcelReader.getUserDetail();
+					nameField.sendKeys(data);
+			        
+			        WebElement NUmberField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='phone']"));
+			      
+			        NUmberField.sendKeys(prop.get("number").toString());
+			        
+			        WebElement emailField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='email']"));
+			       
+			        String email=ExcelReader.getEmail();
+			        emailField.sendKeys(email);
+
+		    
+			      Thread.sleep(10000);
 				    
 				    WebElement text= driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div[2]/div[1]/div[1]"));
 

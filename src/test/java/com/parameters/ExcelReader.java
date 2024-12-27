@@ -1,6 +1,7 @@
 package com.parameters;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -17,6 +18,8 @@ public class ExcelReader {
 	static XSSFRow rw;
 	static XSSFCell cell10;
 	static String url;
+	static String data;
+	static String data1;
 public static String geturl() throws IOException{
 	f= new File(System.getProperty("user.dir")+"//MBExcelData//MBData.xlsx");
 	fis= new FileInputStream(f);
@@ -40,16 +43,28 @@ cell10= rw.getCell(0);
 url=cell10.getStringCellValue();
 return url;
 }
-//public static void main (String[] args) throws IOException
-//{
-//	f= new File(System.getProperty("user.dir")+"//MBExcelData//MBData.xlsx");
-//	fis= new FileInputStream(f);
-//	wb= new XSSFWorkbook(fis);  // to call the value from workbook
-//	sheet= wb.getSheetAt(0); // getting the sheet using wb method dont give space in sheet name
-//	rw= sheet.getRow(1);
-//	
-//cell10= rw.getCell(0);
-//url=cell10.getStringCellValue();
-//System.out.println(url);
-//}
+public static String getUserDetail() throws IOException {
+	f= new File(System.getProperty("user.dir")+"//MBExcelData//MBData.xlsx");
+	fis= new FileInputStream(f);
+	wb= new XSSFWorkbook(fis);  // to call the value from workbook
+	sheet= wb.getSheetAt(0); // getting the sheet using wb method dont give space in sheet name
+	rw= sheet.getRow(3);
+	
+cell10= rw.getCell(0);
+data=cell10.getStringCellValue();
+return data;
+}
+
+public static String getEmail() throws IOException {
+	f= new File(System.getProperty("user.dir")+"//MBExcelData//MBData.xlsx");
+	fis= new FileInputStream(f);
+	wb= new XSSFWorkbook(fis);  // to call the value from workbook
+	sheet= wb.getSheetAt(0); // getting the sheet using wb method dont give space in sheet name
+	rw= sheet.getRow(4);
+	
+cell10= rw.getCell(0);
+data=cell10.getStringCellValue();
+return data;
+}
+
 }

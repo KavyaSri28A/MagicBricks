@@ -1,15 +1,22 @@
 package com.pages;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class ClickHomeInterior {
 	static JavascriptExecutor js;
@@ -30,6 +37,18 @@ public class ClickHomeInterior {
 		            By.xpath("//a[text()='Home Interior Design Services']")));
 		        Thread.sleep(100);
 		        interiorDesignServices.click();
+	}
+	
+	public static void screenShotMethod(String fname, WebDriver driver) throws IOException {
+	    File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+	    // Specify the absolute path for the destination folder directly
+	    String destinationPath = "C:\\Users\\KS89\\git\\repository2\\MagicBricks\\ScreenShots\\" + fname + ".png";
+	    File destinationFile = new File(destinationPath);
+
+	    // Copy the screenshot to the specified location
+	    FileUtils.copyFile(screenshotFile, destinationFile);
+	    System.out.println("Screenshot saved: " + destinationFile.getAbsolutePath());
 	}
 	
 	public static void bookYourSpot(WebDriver driver,WebDriverWait wait,String currentWindowHandle) throws InterruptedException {
@@ -61,7 +80,7 @@ public class ClickHomeInterior {
         
 }
 	
-	public static void popUpDetails(WebDriver driver,WebDriverWait wait) throws InterruptedException {
+	public static void popUpDetails(WebDriver driver,WebDriverWait wait, Properties prop) throws InterruptedException {
 		WebElement month = driver.findElement (By.xpath("//label[@class='mb-form-ui__select__label' and text()='Within 1 Month']"));
 		Thread.sleep(100);   
 		month.click();
@@ -70,19 +89,18 @@ public class ClickHomeInterior {
 		Thread.sleep(100);   
 		continueButton.click();
 		WebElement nameField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='user-name']"));
-        Actions actions = new Actions(driver);
-        actions.click(nameField).sendKeys("Vicky").perform();
+   
+        nameField.sendKeys(prop.get("name").toString());
         
         WebElement NUmberField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='phone']"));
-        Actions actions1 = new Actions(driver);
-        actions1.click(NUmberField).sendKeys("7994982646").perform();
+       
+        NUmberField.sendKeys(prop.get("number").toString());
         
         WebElement emailField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='email']"));
-        Actions actions2 = new Actions(driver);
-        actions2.click(emailField).sendKeys("vicky23@gamil.com").perform();
-//      WebElement Submit = driver.findElement(By.xpath("//button[@class='cta cta-filled' and text()='Submit']"));
-//		Thread.sleep(100);   
-//		Submit.click();
+      
+        emailField.sendKeys(prop.get("email").toString());
+
+
       Thread.sleep(10000);
       
       
@@ -102,10 +120,7 @@ public class ClickHomeInterior {
       // Compare actual text with expected text
       Assert.assertTrue("Popup text does not match expected content!", actualText.contains(expectedText));
   	driver.quit();
-  	
-//		WebElement verify = driver.findElement(By.xpath("//*[@id=\"int-contact-popup\"]/div/div[3]/button"));
-//		Thread.sleep(20000);   
-//		verify.click();
+  
 		
 		
 	}
