@@ -19,50 +19,6 @@ public class ExcelReader {
 	static XSSFCell cell10;
 	static String url;
 	
-	public static String geturl()throws IOException{
-		file= new File(System.getProperty("user.dir")+"//MBExcelData//MBData.xlsx");
-
-		fis= new FileInputStream(file);
-
-		wb= new XSSFWorkbook(fis);  // to call the value from workbook
-
-		sheet= wb.getSheetAt(0); // getting the sheet using wb method dont give space in sheet name
-
-		row= sheet.getRow(1);
-
-		cell10= row.getCell(0);
-		
-		url=cell10.getStringCellValue();
-		
-		return url;
-//	}
-//	
-//}
-
-//package com.parameters;
-//
-//import java.io.File;
-//import java.io.FileInputStream;
-//import java.io.IOException;
-//
-//import org.apache.poi.hssf.usermodel.HSSFCell;
-//import org.apache.poi.hssf.usermodel.HSSFRow;
-//import org.apache.poi.hssf.usermodel.HSSFSheet;
-//import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-//import org.apache.poi.ss.usermodel.Cell;
-//import org.apache.poi.ss.usermodel.Row;
-//import org.apache.poi.ss.usermodel.Sheet;
-//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-//
-//public class ExcelReader {
-//    static File file;
-//    static FileInputStream fis;
-//    static HSSFWorkbook wb;
-//    static HSSFSheet sheet;
-//    static HSSFRow row;
-//    static HSSFCell cell10;
-//    static String url;
-////    
 //    public static void main(String Args[]) throws IOException {
 //         Provide the correct path to your Excel file
 //        file = new File(System.getProperty("user.dir") + "//MBExcelData//MBData.xlsx");
@@ -107,8 +63,11 @@ public class ExcelReader {
 //
 //        fis.close();
 //        wb.close();
-    }
-	public static String getData(int rownum,int colnum,int sheetNumber) {
+    
+	public static String getData(int rownum,int colnum,int sheetNumber) throws IOException {
+		file= new File(System.getProperty("user.dir")+"//MBExcelData//MBData.xlsx");
+		fis= new FileInputStream(file);
+		wb= new XSSFWorkbook(fis);
 		sheet=wb.getSheetAt(sheetNumber);
 		row=sheet.getRow(rownum);
 		cell10=row.getCell(colnum);

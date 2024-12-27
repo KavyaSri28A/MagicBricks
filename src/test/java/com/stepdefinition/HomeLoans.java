@@ -16,6 +16,7 @@ import com.pages.CalculatorCommon;
 import com.pages.CalculatorNegativeScenario;
 import com.pages.HomeLoansFunction;
 import com.parameters.FileReading;
+import com.parameters.ScreenshotFile;
 import com.setup.BaseSteps;
 
 import io.cucumber.datatable.DataTable;
@@ -50,8 +51,12 @@ public class HomeLoans {
 	}
 
 	@Then("User should be navigated to the verification page")
-	public void user_should_be_navigated_to_the_verification_page() {
+	public void user_should_be_navigated_to_the_verification_page() throws IOException, InterruptedException {
 	    HomeLoansFunction.compareOutput(driver, prop);
+	    Thread.sleep(3000);
+	    ScreenshotFile.clickScreenshot(driver, (String)prop.get("sspath"));
+	    Thread.sleep(3000);
+	    driver.quit();
 	}
 
 
@@ -68,7 +73,7 @@ public class HomeLoans {
 	@Then("User should be able to see the Difference of old interest and new interest to pay")
 	public void user_should_be_able_to_see_the_difference_of_old_interest_and_new_interest_to_pay(DataTable dataTable) throws InterruptedException {
 		BalanceTransfer.compareOutput(driver, prop,dataTable);
-//		driver.quit();
+		driver.quit();
 	}
 
 	@When("User selects {string} Bank Partner")
@@ -85,7 +90,7 @@ public class HomeLoans {
 	public void it_should_show_the_available_schemes_of_the_loans_in_bank() {
 	    // Write code here that turns the phrase above into concrete actions
 		BankPartnersFunction.checkResult(driver, prop);
-//		driver.quit();
+		driver.quit();
 	}
 
 	@When("User clicks on the Home Loan EMI Calculator")
@@ -94,7 +99,7 @@ public class HomeLoans {
 	}
 
 	@When("User Provides the details")
-	public void user_Provides_the_following_details() throws InterruptedException {
+	public void user_Provides_the_following_details() throws InterruptedException, IOException {
 		CalculatorCommon.enterdetails(driver, prop, mouse);
 	}
 
@@ -102,7 +107,7 @@ public class HomeLoans {
 	public void it_should_show_the_details_of_the_loan_in_a_table_format() {
 	    // Write code here that turns the phrase above into concrete actions
 		CalculatorCommon.compareresult(driver, prop);
-//		driver.quit();
+		driver.quit();
 	}
 	
 	@When("User clicks on the Home Loan EMI CalculatorN")
@@ -121,7 +126,7 @@ public class HomeLoans {
 	public void it_should_show_the_warning(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 		CalculatorNegativeScenario.getComparisson(string, driver);
-//		driver.quit();
+		driver.quit();
 	}
 	@When("User clicks on {string} home loan interest rate")
 	public void user_clicks_on_home_loan_interest_rate(String string) throws InterruptedException {
@@ -129,9 +134,9 @@ public class HomeLoans {
 	}
 
 	@Then("The page should provide {string} bank Interest Details")
-	public void the_page_should_provide_bank_interest_details(String string) throws InterruptedException {
+	public void the_page_should_provide_bank_interest_details(String string) throws InterruptedException, IOException {
 		BankParnersInterestDetails.compareResult(driver, mouse, prop);
-//	    driver.quit();
+	    driver.quit();
 	}
 
 }

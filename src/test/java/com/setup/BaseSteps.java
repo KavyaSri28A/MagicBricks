@@ -19,7 +19,7 @@ public class BaseSteps {
 	    driver = new ChromeDriver(chromeOptions);
 		
 		driver.manage().window().maximize();
-		String url=ExcelReader.geturl();
+		String url=ExcelReader.getData(1, 0, 0);
 		driver.get(url);
 	}
 	

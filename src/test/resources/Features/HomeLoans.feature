@@ -1,48 +1,50 @@
-Feature: Home Loans and Details
+Feature: HomeLoans and Details
 
-  Scenario: Getting Home Loans
+  Scenario: User getting the details of a Home Loan
     Given User is on Home Page of Magic Bricks
     When User clicks on Home Loans option
     And User gives the following details along with some more details
       | amount  | mobile     |
-      | 4000000 | 8056343899 |
+      | 4000000 | 9566935372 |
     Then User should be navigated to the verification page
 
-  Scenario Outline: User Closing the Old loan and Opening New loan in order to minimize the interest
+  Scenario Outline: The user wants to close the old loan and getting new loan
     Given User is on Home Page of Magic Bricks
     When User clicks on the Balance Transfer
     And User provides the following loan details
-      | Amount   | Rate   | Tenure | paidEMI | NewRate   | ProcessingFee   | newtenure       |
-      | <Amount> | <Rate> | <Term> | <EMI>   | <NewRate> | <ProcessingFee> | <PrepaymentFee> |
+      | Amount   | Tenure   | Rate     | paidEMI  | newtenure | NewRate  | ProcessingFee |
+      | <field1> | <field2> | <field3> | <field4> | <field5>  | <field6> | <field7>      |
     Then User should be able to see the Difference of old interest and new interest to pay
       | expectedinterest |
-      | <amount>         |
+      | <field8>         |
 
     Examples: 
-      | Amount  | Rate | Term | EMI | NewRate | ProcessingFee | PrepaymentFee | amount    |
-      | 4000000 |    5 |   15 |  40 |      10 |             1 |            10 |  9,17,661 |
-      | 5000000 |    5 |   15 |  40 |      10 |             1 |            10 | 11,47,077 |
-      | 6000000 |    5 |   15 |  40 |      10 |             1 |            10 | 13,76,492 |
+      | field1  | field2 | field3 | field4 | field5 | field6 | field7 | field8    |
+      | 4000000 |     15 |      5 |     40 |     10 |     10 |      1 |  9,17,661 |
+      | 5000000 |     15 |      5 |     40 |     10 |     10 |      1 | 11,47,077 |
+      | 6000000 |     15 |      5 |     40 |     10 |     10 |      1 | 13,76,492 |
 
-  Scenario: User Selecting the bank partners for the loan
+  Scenario: User Getting loan details of bank partners
     Given User is on Home Page of Magic Bricks
     When User selects "Axis" Bank Partner
     And User provides details for a loan
     Then It should show the otp verification
 
-  Scenario: User Calculating about the loan and EMI according to their details
+  Scenario: User Calculating the EMI
     Given User is on Home Page of Magic Bricks
     When User clicks on the Home Loan EMI Calculator
     And User Provides the details
     Then It should go to  the otp verification page
 
-  Scenario: User Giving the rate of interest less than 8
+
+  Scenario: User Getting Interest Rate of a particular Bank
+    Given User is on Home Page of Magic Bricks
+    When User clicks on "SBI" home loan interest rate
+    Then The page should provide "SBI" bank Interest Details
+
+      Scenario: User Giving wrong inputs in calculator
     Given User is on Home Page of Magic Bricks
     When User clicks on the Home Loan EMI CalculatorN
     And User Provides the details and rate of interest as "5"
     Then It should show the warning "Min interest starts from 8%"
-
-  Scenario: User Getting the Interest Rate detail for the particular Loan Partners
-    Given User is on Home Page of Magic Bricks
-    When User clicks on "SBI" home loan interest rate
-    Then The page should provide "SBI" bank Interest Details
+    

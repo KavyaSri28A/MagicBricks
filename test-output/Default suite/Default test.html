@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>8/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Dec 24 10:21:03 IST 2024</td>
+<td>Started on:</td><td>Fri Dec 27 09:57:32 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>65 seconds (65317 ms)</td>
+<tr><td>Total time:</td><td>353 seconds (353652 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,69 +67,6 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='com.runner.TestRunnerParellal.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerParellal<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Calculating about the loan and EMI according to their details", "Home Loans and Details"</td>
-<td><div><pre>org.openqa.selenium.ElementNotInteractableException: element not interactable
-  (Session info: chrome=131.0.6778.140)
-Build info: version: &apos;4.27.0&apos;, revision: &apos;d6e718d134&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [04c4c288e6495d756aff3b753775e2ca, clickElement {id=f.F677C3B72CB860802B09D105ED629EC6.d.8E605424DA056EA1DA0437064B02ADD7.e.90}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.140, chrome: {chromedriverVersion: 131.0.6778.204 (52183f9e99a..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63955}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63955/devtoo..., se:cdpVersion: 131.0.6778.140, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (04c4c288e6495d756aff3b753775e2ca)] -&gt; xpath: //*[@id=&quot;homeloanDrop&quot;]/div/div[3]/ul/li[1]/a]
-Session ID: 04c4c288e6495d756aff3b753775e2ca
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
-	at com.pages.CalculatorCommon.clickCalculator(CalculatorCommon.java:19)
-	at com.stepdefinition.HomeLoans.user_clicks_on_the_home_loan_emi_calculator(HomeLoans.java:93)
-	at ✽.User clicks on the Home Loan EMI Calculator(file:///C:/Users/jpattel/eclipse-workspace/Learning/MagicBricks/src/test/resources/Features/HomeLoans.feature:35)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1148636129", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1148636129'><pre>org.openqa.selenium.ElementNotInteractableException: element not interactable
-  (Session info: chrome=131.0.6778.140)
-Build info: version: &apos;4.27.0&apos;, revision: &apos;d6e718d134&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [04c4c288e6495d756aff3b753775e2ca, clickElement {id=f.F677C3B72CB860802B09D105ED629EC6.d.8E605424DA056EA1DA0437064B02ADD7.e.90}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.140, chrome: {chromedriverVersion: 131.0.6778.204 (52183f9e99a..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63955}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63955/devtoo..., se:cdpVersion: 131.0.6778.140, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (04c4c288e6495d756aff3b753775e2ca)] -&gt; xpath: //*[@id=&quot;homeloanDrop&quot;]/div/div[3]/ul/li[1]/a]
-Session ID: 04c4c288e6495d756aff3b753775e2ca
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
-	at com.pages.CalculatorCommon.clickCalculator(CalculatorCommon.java:19)
-	at com.stepdefinition.HomeLoans.user_clicks_on_the_home_loan_emi_calculator(HomeLoans.java:93)
-	at ✽.User clicks on the Home Loan EMI Calculator(file:///C:/Users/jpattel/eclipse-workspace/Learning/MagicBricks/src/test/resources/Features/HomeLoans.feature:35)
-</pre></div></td>
-<td>20</td>
-<td>com.runner.TestRunnerParellal@13b6aecc</td></tr>
-</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -139,30 +76,45 @@ Session ID: 04c4c288e6495d756aff3b753775e2ca
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.runner.TestRunnerParellal.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerParellal<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Closing the Old loan and Opening New loan in order to minimize the interest", "Home Loans and Details"</td>
+<td title='com.runner.TestRunnerTestNGExtendReports.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNGExtendReports<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Getting loan details of bank partners", "HomeLoans and Details"</td>
 <td></td>
-<td>64</td>
-<td>com.runner.TestRunnerParellal@13b6aecc</td></tr>
+<td>36</td>
+<td>com.runner.TestRunnerTestNGExtendReports@13b6aecc</td></tr>
 <tr>
-<td title='com.runner.TestRunnerParellal.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerParellal<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Getting the Interest Rate detail for the particular Loan Partners", "Home Loans and Details"</td>
+<td title='com.runner.TestRunnerTestNGExtendReports.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNGExtendReports<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Getting Interest Rate of a particular Bank", "HomeLoans and Details"</td>
 <td></td>
-<td>27</td>
-<td>com.runner.TestRunnerParellal@13b6aecc</td></tr>
+<td>20</td>
+<td>com.runner.TestRunnerTestNGExtendReports@13b6aecc</td></tr>
 <tr>
-<td title='com.runner.TestRunnerParellal.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerParellal<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Giving the rate of interest less than 8", "Home Loans and Details"</td>
+<td title='com.runner.TestRunnerTestNGExtendReports.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNGExtendReports<br>Test method: Runs Cucumber Scenarios<br>Parameters: "The user wants to close the old loan and getting new loan", "HomeLoans and Details"</td>
 <td></td>
-<td>43</td>
-<td>com.runner.TestRunnerParellal@13b6aecc</td></tr>
+<td>58</td>
+<td>com.runner.TestRunnerTestNGExtendReports@13b6aecc</td></tr>
 <tr>
-<td title='com.runner.TestRunnerParellal.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerParellal<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Selecting the bank partners for the loan", "Home Loans and Details"</td>
+<td title='com.runner.TestRunnerTestNGExtendReports.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNGExtendReports<br>Test method: Runs Cucumber Scenarios<br>Parameters: "The user wants to close the old loan and getting new loan", "HomeLoans and Details"</td>
 <td></td>
-<td>44</td>
-<td>com.runner.TestRunnerParellal@13b6aecc</td></tr>
+<td>60</td>
+<td>com.runner.TestRunnerTestNGExtendReports@13b6aecc</td></tr>
 <tr>
-<td title='com.runner.TestRunnerParellal.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerParellal<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Getting Home Loans", "Home Loans and Details"</td>
+<td title='com.runner.TestRunnerTestNGExtendReports.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNGExtendReports<br>Test method: Runs Cucumber Scenarios<br>Parameters: "The user wants to close the old loan and getting new loan", "HomeLoans and Details"</td>
 <td></td>
-<td>44</td>
-<td>com.runner.TestRunnerParellal@13b6aecc</td></tr>
+<td>58</td>
+<td>com.runner.TestRunnerTestNGExtendReports@13b6aecc</td></tr>
+<tr>
+<td title='com.runner.TestRunnerTestNGExtendReports.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNGExtendReports<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User getting the details of a Home Loan", "HomeLoans and Details"</td>
+<td></td>
+<td>45</td>
+<td>com.runner.TestRunnerTestNGExtendReports@13b6aecc</td></tr>
+<tr>
+<td title='com.runner.TestRunnerTestNGExtendReports.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNGExtendReports<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Giving wrong inputs in calculator", "HomeLoans and Details"</td>
+<td></td>
+<td>35</td>
+<td>com.runner.TestRunnerTestNGExtendReports@13b6aecc</td></tr>
+<tr>
+<td title='com.runner.TestRunnerTestNGExtendReports.runScenario()'><b>runScenario</b><br>Test class: com.runner.TestRunnerTestNGExtendReports<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User Calculating the EMI", "HomeLoans and Details"</td>
+<td></td>
+<td>37</td>
+<td>com.runner.TestRunnerTestNGExtendReports@13b6aecc</td></tr>
 </table><p>
 </body>
 </html>
