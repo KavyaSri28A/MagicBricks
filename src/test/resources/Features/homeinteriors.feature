@@ -1,7 +1,7 @@
 
 Feature: Home Interior Dropdown Menu on Magicbricks
 
-  #Scenario: Verify Interior Design Services Page
+  Scenario: Verify Interior Design Services Page
     #Given the user is on the Magicbricks Homepage
     #When The user clicks on Home Interiors
     #And the user selects Interior Design Services under Home Interiors
@@ -86,4 +86,7 @@ Scenario: User Giving the rate of interest less than 8
     
     
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> 9c986533d53d2e6aece7dfcfa9b51d695feccf0a
