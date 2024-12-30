@@ -242,7 +242,7 @@ static String secondURL;
 	}
 
 	@Then("User should fill the user details to get verified")
-	public void user_should_fill_the_user_details_to_get_verified(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+	public void user_should_fill_the_user_details_to_get_verified(io.cucumber.datatable.DataTable dataTable) throws InterruptedException, IOException {
 		InteriorCostCalculatorPage.getUserDetails(driver, wait,dataTable);
 	}
 	

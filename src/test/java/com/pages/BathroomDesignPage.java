@@ -106,8 +106,8 @@ public class BathroomDesignPage {
 				    
 					WebElement nameField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='user-name']"));
 			        
-					String data=ExcelReader.getUserDetail();
-					nameField.sendKeys(data);
+				
+					nameField.sendKeys(prop.get("name").toString());
 			        
 			        WebElement NUmberField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='phone']"));
 			      
@@ -115,8 +115,8 @@ public class BathroomDesignPage {
 			        
 			        WebElement emailField = driver.findElement(By.xpath("//input[@class='mb-form-ui__input' and @id='email']"));
 			       
-			        String email=ExcelReader.getEmail();
-			        emailField.sendKeys(email);
+			      
+			        emailField.sendKeys(prop.get("email").toString());;
 
 		    
 			      Thread.sleep(10000);

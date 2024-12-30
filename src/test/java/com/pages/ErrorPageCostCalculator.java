@@ -24,7 +24,7 @@ public class ErrorPageCostCalculator {
 	      homeInteriors.click();
 	      
 	      WebElement calculator = wait.until(ExpectedConditions.visibilityOfElementLocated(
-	              By.xpath("//*[@id=\"commercialIndex\"]/header/section[2]/div/ul/li[5]/div/div/div[3]/ul/li[4]/a")));
+	              By.xpath("//*[@id=\"commercialIndex\"]/header/section[2]/div/ul/li[5]/div/div/div[3]/ul/li[3]/a")));
 	          Thread.sleep(100);
 	          calculator.click();
 	          Thread.sleep(10000);

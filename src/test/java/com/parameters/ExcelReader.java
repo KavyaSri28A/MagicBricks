@@ -66,5 +66,16 @@ cell10= rw.getCell(0);
 data=cell10.getStringCellValue();
 return data;
 }
+public static String getNum() throws IOException {
+	f= new File(System.getProperty("user.dir")+"//MBExcelData//MBData.xlsx");
+	fis= new FileInputStream(f);
+	wb= new XSSFWorkbook(fis);  // to call the value from workbook
+	sheet= wb.getSheetAt(0); // getting the sheet using wb method dont give space in sheet name
+	rw= sheet.getRow(5);
+	
+cell10= rw.getCell(0);
+data=cell10.getStringCellValue();
+return data;
+}
 
 }

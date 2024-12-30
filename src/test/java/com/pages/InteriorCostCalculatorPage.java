@@ -1,5 +1,6 @@
 package com.pages;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.parameters.ExcelReader;
 
 import io.cucumber.datatable.DataTable;
 
@@ -28,7 +31,7 @@ public class InteriorCostCalculatorPage {
         homeInteriors.click();
         
         WebElement calculator = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id=\"commercialIndex\"]/header/section[2]/div/ul/li[5]/div/div/div[3]/ul/li[4]/a")));
+                By.xpath("//*[@id=\"commercialIndex\"]/header/section[2]/div/ul/li[5]/div/div/div[3]/ul/li[3]/a")));
             Thread.sleep(100);
             calculator.click();
             Thread.sleep(10000);
@@ -67,7 +70,7 @@ public class InteriorCostCalculatorPage {
 }
 	
 	
-	public static void getUserDetails(WebDriver driver,WebDriverWait wait,DataTable dataTable) throws InterruptedException {
+	public static void getUserDetails(WebDriver driver,WebDriverWait wait,DataTable dataTable) throws InterruptedException, IOException {
 		 // entering the details of the user
 		
 		List<Map<String,String>> details=dataTable.asMaps(String.class, String.class);
@@ -75,12 +78,36 @@ public class InteriorCostCalculatorPage {
 				WebElement nameField = driver.findElement(By.xpath("//*[@id=\"user-name\"]"));
 			   WebElement NUmberField = driver.findElement(By.xpath("//*[@id=\"phone\"]"));
 			   WebElement emailField = driver.findElement(By.xpath("//*[@id=\"email\"]"));
-		        actions.click(nameField).sendKeys(data.get("name"));
-		        actions.click(NUmberField).sendKeys(data.get("phoneNumber"));
-		        actions.click(emailField).sendKeys(data.get("email"));
+		       //actions.click(nameField).sendKeys(data.get("name"));
+		        actions.click(NUmberField).sendKeys("7994982646");
+		        //actions.click(emailField).sendKeys(data.get("email"));
+		        try {
+		            // Fetch the name from the Excel sheet
+		            String nameFromExcel = ExcelReader.getUserDetail();
+		            //Integer numFromExcel = ExcelReader.getNum();
+		            String emailFromExcel = ExcelReader.getEmail();
+
+
+		            // Assign the fetched name to the nameField
+		            nameField.sendKeys(nameFromExcel);
+		            //NUmberField.sendKeys(numFromExcel);
+		            emailField.sendKeys(emailFromExcel);
+
+		            // Log or print for verification (optional)
+		            System.out.println("Name entered: " + nameFromExcel);
+//		            System.out.println("Name entered: " + numFromExcel);
+//		            System.out.println("Name entered: " + emailFromExcel);
+		        } catch (IOException e) {
+		            // Handle the exception in case of issues with file reading
+		            e.printStackTrace();
+		            System.out.println("Error while fetching data from Excel.");
+		        }
+
+		        
+		        
 		}
 
-		   WebElement text= driver.findElement(By.xpath("//div[@class='mb-contact-form_title']"));
+		   WebElement text= driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div[1]/div[1]"));
 
 		  		String actualText = text.getText().trim();
 		          System.out.println("Actual Popup Text: " + actualText);

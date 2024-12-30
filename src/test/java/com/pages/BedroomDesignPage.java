@@ -57,7 +57,7 @@ public class BedroomDesignPage {
 		js = (JavascriptExecutor) driver;
 		
 		WebElement scroll = wait.until(ExpectedConditions.presenceOfElementLocated(
-	            By.xpath("//div[@class='disrp__card__heading' and text()='Luxury Bedroom 1']")));
+	            By.xpath("//div[@class='disrp__card__heading' and text()='Luxury Bedroom 4']")));
 	    
 	    // Scroll into view
 	    js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", scroll);
@@ -68,7 +68,7 @@ public class BedroomDesignPage {
 		Thread.sleep(1000);
 	    drop.click();
 		Thread.sleep(1000);
-	    WebElement text= driver.findElement(By.xpath("//*[@id=\"id_dirsp\"]/div[3]/div[1]/div[1]/div[3]/div[2]/div[3]/div"));
+	   WebElement text= driver.findElement(By.xpath("//*[@id=\"id_dirsp\"]/div[3]/div[1]/div[1]/div[3]/div[2]/div[3]/div"));
 		Thread.sleep(1000);
 	    text.click();
 		Thread.sleep(1000);
